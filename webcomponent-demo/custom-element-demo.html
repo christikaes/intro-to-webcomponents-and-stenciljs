@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Template Demo</title>
+  </head>
+  <body>
+    <template id="my-button">
+      <style>
+        button {
+          background: lightblue;
+          border: none;
+          height: 40px;
+          width: 100px;
+          margin: 10px;
+        }
+      </style>
+      <button><slot></slot></button>
+    </template>
+    <script>
+      class MyButton extends HTMLElement {
+        constructor() {
+          super();
+
+          var shadowRoot = this.attachShadow({ mode: "open" });
+          var shadowChild = document
+            .getElementById("my-button")
+            .content.cloneNode(true);
+          shadowRoot.appendChild(shadowChild);
+        }
+      }
+      window.customElements.define("my-button", MyButton);
+    </script>
+    <my-button>Hello World test!</my-button>
+    <my-button>Hello World! me too!</my-button>
+  </body>
+</html>

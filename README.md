@@ -1,0 +1,1 @@
+This is a talk for the Front end learning guild. Here are the examples of web components as well as some stencil components. Feel free to contribute!

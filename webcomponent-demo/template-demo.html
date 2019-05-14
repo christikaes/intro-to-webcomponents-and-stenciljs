@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Template Demo</title>
+  </head>
+  <body>
+    Hello World!
+    <template id="my-button">
+      <style>
+        button {
+          background: lightblue;
+          border: none;
+          height: 40px;
+          width: 100px;
+          margin: 10px;
+        }
+      </style>
+      <button>Hello World!</button>
+    </template>
+    <script>
+      var clone = document.getElementById("my-button").content.cloneNode(true);
+      document.body.appendChild(clone);
+      var clone2 = document.getElementById("my-button").content.cloneNode(true);
+      document.body.appendChild(clone2);
+    </script>
+  </body>
+</html>

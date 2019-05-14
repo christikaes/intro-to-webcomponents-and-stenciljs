@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Web Component Demo</title>
+  </head>
+  <body>
+    Hello World!
+
+    <template id="my-template">
+      <button>Hi there!!</button>
+    </template>
+
+    <script>
+      var clone = document
+        .getElementById("my-template")
+        .content.cloneNode(true);
+      document.body.append(clone);
+
+      var clone2 = document
+        .getElementById("my-template")
+        .content.cloneNode(true);
+      document.body.append(clone2);
+    </script>
+  </body>
+</html>

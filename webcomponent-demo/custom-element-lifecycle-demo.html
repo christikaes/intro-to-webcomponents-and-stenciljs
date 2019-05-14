@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Template Demo</title>
+  </head>
+  <body>
+    <template id="my-button">
+      <style>
+        button {
+          background: lightblue;
+          border: none;
+          height: 40px;
+          width: 100px;
+          margin: 10px;
+        }
+      </style>
+      <button><slot></slot></button>
+    </template>
+    <script>
+      class MyButton extends HTMLElement {
+        constructor() {
+          super();
+
+          var shadowRoot = this.attachShadow({ mode: "open" });
+          var shadowChild = document
+            .getElementById("my-button")
+            .content.cloneNode(true);
+          shadowRoot.appendChild(shadowChild);
+        }
+
+        // Invoked each time the custom element is appended into a document-connected element.
+        connectedCallback() {
+          console.log("connected");
+
+          // Attribute example
+          var attributeExample = this.getAttribute("example");
+          console.log({ attributeExample });
+        }
+
+        // Invoked each time the custom element is disconnected from the document's DOM.
+        disconnectedCallback() {
+          console.log("Disconnected");
+        }
+
+        // Invoked each time the custom element is moved to a new document.
+        adoptedCallback() {
+          console.log("adopted");
+        }
+
+        // Invoked each time one of the custom element's attributes is added, removed, or changed.
+        attributeChangedCallback() {
+          console.log("attribute changed");
+        }
+      }
+      window.customElements.define("my-button", MyButton);
+    </script>
+    <my-button example="example attribute!">Hello World!</my-button>
+    <my-button>Hello World! me too!</my-button>
+  </body>
+</html>
